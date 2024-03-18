@@ -1,0 +1,31 @@
+main{
+    background-color: white;
+    border: 1px solid #80808080;
+    width: 100%;
+
+    
+
+    margin-top: 10px;
+
+
+    h2{
+        margin-bottom: 25px;
+    }
+    
+    select{
+        margin: 5px 0;
+    }
+
+    input[type="search"]{
+        display: block;
+    }
+
+    .advancedSearchOption{
+        display: none;
+    }
+
+    .showAdvancedSearchOption{
+        display: block!important;
+    }
+
+}

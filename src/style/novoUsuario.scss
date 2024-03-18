@@ -1,0 +1,63 @@
+section{
+    // display: none;
+    padding: 20px;
+  
+    background-color: white;
+    border: 1px solid #80808080;
+
+    form{
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        margin: 15px 0px;
+
+
+        label{
+            margin-top: 5px;
+            margin-bottom: 3px;
+            font-size: 1.1rem;
+        }
+
+        .txtInput{
+            padding: 5px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 7px;
+            background-color: #e6e7ee;
+            width: 100%;
+        }
+
+        .selections{
+            margin-top: 5px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        select{
+            margin-top: 5px;
+            padding: 5px;
+            font-size: 1.03rem;
+            width: 48%;
+            border: none;
+            border-radius: 7px;
+            background-color: #e6e7ee;
+        }
+
+        input[type="submit"]{
+            margin-top: 10px;
+            padding: 8px;
+            width: 100%;
+            font-size: 1.05rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 7px;
+            color: white;
+            background-color: #0b92c6;
+
+            cursor: pointer;
+        }
+    }
+
+}
