@@ -9,15 +9,23 @@ function Sidebar(){
 
         switch (tela) {
             case "novoUsuario":
-                navigate("/novoUsuario")
+                navigate("/novoUsuario");
                              
                 break;
 
             case "buscarUsuario":
-                navigate("/")
+                navigate("/");
                
                 break;
-            
+            case "verAlunos":
+                navigate("/lista");
+
+            break;
+
+            case "verCandidatos":
+                navigate("/lista");
+
+                break;
         
             default:
                 break;
@@ -27,6 +35,8 @@ function Sidebar(){
 
 
     }
+
+
 
     return (
             <ul>
@@ -50,7 +60,7 @@ function Sidebar(){
                          Novo usuário
                     </div>
                 </li>
-                <li className="sidebarGroup">
+                <li className="sidebarGroup" onClick={()=>{alterarTela("verAlunos")}}>
                     <form action="/search" method="GET" id="getAllStudentsForm">
                         <select name="usuario" className="hide">
                             <option value="aluno">Aluno</option>
@@ -60,7 +70,7 @@ function Sidebar(){
                         </div>
                     </form>
                 </li>
-                <li className="sidebarGroup">
+                <li className="sidebarGroup" onClick={()=>{alterarTela("verCandidatos")}}>
                     <form action="/search" method="GET" id="getAllCandidatesForm">
                         <select name="usuario" className="hide">
                             <option value="candidato">Candidato</option>
@@ -70,6 +80,8 @@ function Sidebar(){
                         </div>
                     </form>
                 </li>
+
+
             </ul>
 
     )

@@ -1,6 +1,9 @@
 import '../style/buscarUsuario.scss'
-
+import { useNavigate } from 'react-router-dom';
 function BuscarUsuario(){
+
+    const navigate = useNavigate();
+
 
 
 
@@ -32,11 +35,13 @@ function BuscarUsuario(){
 
     async function printInfo(){
 
-        let response = await fetch("http://localhost:3001/api");
+        // let response = await fetch("http://localhost:3001/api");
 
-        let getContent = await response.json()
-
-        console.log(getContent);
+        // let getContent = await response.json()
+        event.preventDefault();
+        
+        // console.log(getContent);
+        navigate("/lista");
     }
 
     
@@ -55,7 +60,7 @@ function BuscarUsuario(){
                     <optgroup label="attribute">
                     <option value="vazio">Selecione</option>
                         <option value="linguagem">Linguagem</option>
-                        <option value="stack">Tipo de dev</option>
+                        <option value="stack">Stack</option>
                         <option value="usuario">Aluno/Candidato</option>
                         <option value="email">E-mail</option>
                         <option value="nome">Nome</option>
@@ -94,8 +99,8 @@ function BuscarUsuario(){
             </form>
 
             {/* pesquisar por aluno/candidato */}
-            <form action="/search" method="GET" id="usuarioForm" className="advancedSearchOption">
-                <select name="usuario">
+            <form action="/search" method="GET" id="tipoForm" className="advancedSearchOption">
+                <select name="tipo">
                     <optgroup label="Aluno/Candidato">
                         <option value="vazio">Selecione</option>
                         <option value="aluno">Aluno</option>
