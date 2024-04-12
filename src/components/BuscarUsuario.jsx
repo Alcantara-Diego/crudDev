@@ -59,9 +59,9 @@ function BuscarUsuario(){
                 <select  name="searchOptions" id="searchOptions" onChange={searchParameters}>
                     <optgroup label="attribute">
                     <option value="vazio">Selecione</option>
-                        <option value="linguagem">Linguagem</option>
-                        <option value="stack">Stack</option>
-                        <option value="usuario">Aluno/Candidato</option>
+                        
+                        <option value="curso">Curso</option>
+                        <option value="tipo">Aluno/Candidato</option>
                         <option value="email">E-mail</option>
                         <option value="nome">Nome</option>
                         <option value="telefone">Telefone</option>
@@ -70,9 +70,9 @@ function BuscarUsuario(){
             </div>
 
 
-            {/* pesquisar por stack */}
-            <form action="/search" method="GET" id="stackForm" className="advancedSearchOption">
-                <select  name="stack" >
+            {/* pesquisar por curso */}
+            <form action="/search" method="GET" id="cursoForm" className="advancedSearchOption">
+                <select  name="Curso" >
                     <optgroup label="Desenvolvedor" >
                         <option value="vazio">Selecione</option>
                         <option value="frontEnd">Front-end</option>
@@ -83,20 +83,6 @@ function BuscarUsuario(){
                 <input type="submit" value="Pesquisar" onClick={printInfo}></input>
             </form>
 
-            {/* pesquisar por linguagem */}
-            <form action="/search" method="GET" id="linguagemForm" className="advancedSearchOption">
-                <select  name="linguagem">
-                    <optgroup label="linguagem">
-                        <option value="vazio">Selecione</option>
-                        <option value="javascript">Javascript</option>
-                        <option value="php">PHP</option>
-                        <option value="java">Java</option>
-                        <option value="phyton">Phyton</option>
-                        <option value="c#">C#</option>
-                    </optgroup>
-                </select>
-                <input type="submit" value="Pesquisar" onClick={printInfo}></input>
-            </form>
 
             {/* pesquisar por aluno/candidato */}
             <form action="/search" method="GET" id="tipoForm" className="advancedSearchOption">
@@ -107,7 +93,7 @@ function BuscarUsuario(){
                         <option value="candidato">Candidato</option>
                     </optgroup>
                 </select>
-                <input type="submit" value="Pesquisar"></input>
+                <input type="submit" value="Pesquisar" onClick={printInfo}></input>
             </form>
 
             {/* pesquisar por e-mail */}

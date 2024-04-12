@@ -39,7 +39,7 @@ function Sidebar(){
 
 
     return (
-            <ul>
+            <ul className='sidebar'>
                 <li className="sidebarHeader">
                 
                     <div className="sidebarHeaderContent">

@@ -1,46 +1,49 @@
 #userAllInfoSection{
-    border: 1px solid blue;
     display: block;
-
-    transition: 1.0s;
-
     background-color: white;
     border: 1px solid #80808080;
-    padding: 25px 20px;
-    text-align: center;
+ 
+    padding: 0;
+    // text-align: center;
     z-index: 100;
+    transition: 1.0s;
 
-    #closeAllInfoSectionBtn{
-        position: absolute;
-        top: 25px;
-        right: 28px;
+    .boletim{
+        color: whitesmoke;
+        background-color: #171717e8;
+        width: 300px;
 
-        height: 17px;
-        width: 17px;
-        font-size: 1.4rem;
+        li{
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 5px;
+            border-bottom: 1px solid whitesmoke;
+            text-align: start;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
 
-        background: none;
-        border: none;
-        color:grey;
 
-        cursor:pointer;
+        }
     }
 
     .contentRow{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
+        text-align: center;
 
         .userInfoDiv{
             margin: 10px;
         }
+        
+        .usuarioDevInfo{
+        background-color: rgb(236, 236, 236);
+        }
     }
+
+    
     .userInfoData{
         font-weight: bold;
     }
