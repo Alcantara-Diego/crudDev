@@ -1,8 +1,11 @@
 import '../style/buscarUsuario.scss'
 import { useNavigate } from 'react-router-dom';
-function BuscarUsuario(){
+import { useState } from 'react';
+function BuscarUsuario(props){
 
     const navigate = useNavigate();
+
+    
 
 
 
@@ -33,15 +36,37 @@ function BuscarUsuario(){
         
     }
 
-    async function printInfo(){
 
-        // let response = await fetch("http://localhost:3001/api");
-
-        // let getContent = await response.json()
+   
+    async function buscarDados(tipo){
         event.preventDefault();
+
+
+        let valor = document.getElementById(tipo).value;
+        if (valor=="vazio") return;
+
+        console.log(valor);
+
+
+        let resposta;
+
+
+        console.log(tipo, valor)
+
+        try {
+            let res = await fetch(`http://localhost:8000/api/buscar/${tipo}/${valor}`).then(res => res.json()).then(data => resposta = data)
+        } catch (error) {
+            console.log(error)
+            
+        }
         
-        // console.log(getContent);
-        navigate("/lista");
+
+        
+        console.log(resposta);
+
+        props.setResultadoApi(resposta);
+        // console.log(res);
+        // navigate("/lista");
     }
 
     
@@ -61,10 +86,7 @@ function BuscarUsuario(){
                     <option value="vazio">Selecione</option>
                         
                         <option value="curso">Curso</option>
-                        <option value="tipo">Aluno/Candidato</option>
-                        <option value="email">E-mail</option>
-                        <option value="nome">Nome</option>
-                        <option value="telefone">Telefone</option>
+                        <option value="tipo">Aluno/Candidato</option>                   
                     </optgroup>
                 </select>
             </div>
@@ -72,49 +94,29 @@ function BuscarUsuario(){
 
             {/* pesquisar por curso */}
             <form action="/search" method="GET" id="cursoForm" className="advancedSearchOption">
-                <select  name="Curso" >
+                <select  name="Curso" id="curso">
                     <optgroup label="Desenvolvedor" >
                         <option value="vazio">Selecione</option>
-                        <option value="frontEnd">Front-end</option>
-                        <option value="backEnd">Back-end</option>
-                        <option value="fullStack">Full-stack</option>
+                        <option value="frontend">Front-end</option>
+                        <option value="backend">Back-end</option>
+                        <option value="fullstack">Full-stack</option>
                     </optgroup>
                 </select>
-                <input type="submit" value="Pesquisar" onClick={printInfo}></input>
+                <input type="submit" value="Pesquisar" onClick={()=>{buscarDados("curso")}}></input>
             </form>
 
 
             {/* pesquisar por aluno/candidato */}
             <form action="/search" method="GET" id="tipoForm" className="advancedSearchOption">
-                <select name="tipo">
+                <select name="tipo" id="tipo">
                     <optgroup label="Aluno/Candidato">
                         <option value="vazio">Selecione</option>
                         <option value="aluno">Aluno</option>
                         <option value="candidato">Candidato</option>
                     </optgroup>
                 </select>
-                <input type="submit" value="Pesquisar" onClick={printInfo}></input>
+                <input type="submit" value="Pesquisar" onClick={()=>{buscarDados("tipo")}}></input>
             </form>
-
-            {/* pesquisar por e-mail */}
-            <form action="/search" method="GET" id="emailForm" className="advancedSearchOption">
-                <input type="e-mail" name="email"></input>
-                <input type="submit" value="Pesquisar"></input>
-            </form>
-
-            {/* pesquisar por nome */}
-            <form action="/search" method="GET" id="nomeForm" className="advancedSearchOption">
-                <input type="name" name="nome"></input>
-                <input type="submit" value="Pesquisar"></input>
-            </form>
-
-            {/* pesquisar por telefone */}
-            <form action="/search" method="GET" id="telefoneForm" className="advancedSearchOption">
-                <input type="tel" name="telefone"></input>
-                <input type="submit" value="Pesquisar"></input>
-            </form>
-
-
 
         </main>
     )

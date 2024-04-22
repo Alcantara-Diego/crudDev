@@ -33,7 +33,7 @@ function NovoUsuario(){
                         </optgroup>
                     </select>
 
-                    <select  name="newLanguage" id="Newlanguage">
+                    {/* <select  name="newLanguage" id="Newlanguage">
                         <optgroup label="linguagem">
                             <option value="Javascript">Javascript</option>
                             <option value="PHP">PHP</option>
@@ -41,7 +41,7 @@ function NovoUsuario(){
                             <option value="Phyton">Phyton</option>
                             <option value="C#">C#</option>
                         </optgroup>
-                    </select>
+                    </select> */}
                     
                 </div>
 

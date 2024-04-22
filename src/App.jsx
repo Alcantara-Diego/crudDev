@@ -6,9 +6,16 @@ import UsuariosLista from './components/UsuariosLista'
 import NovoUsuario from './components/NovoUsuario'
 import {BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UsuarioInfo from './components/UsuarioInfo'
+import { useEffect, useState } from 'react'
 
  
 function App() {
+
+  const [resultadoApi, setResultadoApi] = useState([]);
+
+  useEffect(()=>{
+    console.log(resultadoApi)
+  }, [resultadoApi]);
 
   return (
     <Router>
@@ -19,7 +26,7 @@ function App() {
       
             <div className='telaExibida'>
               <Routes>
-                <Route path='/' element={<BuscarUsuario />} />
+                <Route path='/'  element={<BuscarUsuario setResultadoApi={setResultadoApi}/>} />
                 <Route path='/novoUsuario' element={<NovoUsuario />} />
 
                 <Route path='/lista' element={<UsuariosLista />} />
