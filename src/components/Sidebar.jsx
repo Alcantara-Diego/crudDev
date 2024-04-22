@@ -1,11 +1,11 @@
 import '../style/sidebar.scss'
 import { useNavigate } from "react-router-dom"
 
-function Sidebar(){
+function Sidebar(props){
 
     const navigate = useNavigate();
 
-    function alterarTela(tela){
+    async function alterarTela(tela){
 
         switch (tela) {
             case "novoUsuario":
@@ -18,11 +18,49 @@ function Sidebar(){
                
                 break;
             case "verAlunos":
+
+                let alunos;
+                try {
+                    let res = await fetch(`http://localhost:8000/api/buscar/tipo/aluno`).then(res => res.json()).then(data => {
+                        alunos = data;
+
+                        alunos.forEach(pessoa =>{
+                            pessoa.notas = JSON.parse(pessoa.notas);
+                        })
+
+                        props.setResultadoApi(alunos);
+
+
+                    })
+                } catch (error) {
+                    console.log(error)
+                    
+                }
+
+
                 navigate("/lista");
 
             break;
 
             case "verCandidatos":
+
+                let candidatos;
+
+                try {
+                    let res = await fetch(`http://localhost:8000/api/buscar/tipo/candidato`).then(res => res.json()).then(data => {
+                        candidatos = data;
+
+                        candidatos.forEach(pessoa =>{
+                            pessoa.notas = JSON.parse(pessoa.notas);
+                        });
+
+                        props.setResultadoApi(candidatos);
+                    
+                    })
+                } catch (error) {
+                    console.log(error)
+                    
+                }
                 navigate("/lista");
 
                 break;

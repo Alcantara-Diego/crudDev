@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 function App() {
 
   const [resultadoApi, setResultadoApi] = useState([]);
+  const [usuarioCarregado, setUsuarioCarregado] = useState(false);
 
   useEffect(()=>{
     console.log(resultadoApi)
@@ -22,16 +23,16 @@ function App() {
       <div>
         <Nav></Nav>
         <div className="container">
-          <Sidebar></Sidebar>
+          <Sidebar setResultadoApi={setResultadoApi}></Sidebar>
       
             <div className='telaExibida'>
               <Routes>
                 <Route path='/'  element={<BuscarUsuario setResultadoApi={setResultadoApi}/>} />
                 <Route path='/novoUsuario' element={<NovoUsuario />} />
 
-                <Route path='/lista' element={<UsuariosLista />} />
+                <Route path='/lista' element={<UsuariosLista resultadoApi={resultadoApi} setUsuarioCarregado={setUsuarioCarregado} />} />
 
-                <Route path='/usuario' element={<UsuarioInfo />} />
+                <Route path='/usuario' element={<UsuarioInfo  usuarioCarregado={usuarioCarregado}/>} />
 
                 <Route path='*' element={<BuscarUsuario />} />
               </Routes>

@@ -64,9 +64,13 @@ function BuscarUsuario(props){
         
         console.log(resposta);
 
+        resposta.forEach(pessoa =>{
+            pessoa.notas = JSON.parse(pessoa.notas);
+        })
+
         props.setResultadoApi(resposta);
         // console.log(res);
-        // navigate("/lista");
+        navigate("/lista");
     }
 
     

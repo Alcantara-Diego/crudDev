@@ -1,9 +1,35 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
 import '../style/usuarioInfo.scss'
 
-function UsuarioInfo(){
+function UsuarioInfo(props){
+
+    const [materias, setMaterias] = useState(false);
+
+    useEffect(()=>{
+        let usuario = props.usuarioCarregado
+
+        console.log(usuario)
+
+        if (usuario) {
+            console.log("------")
+
+            const notasArray = Object.entries(usuario.notas).map(([materia, info]) => {
+                return [materia, info[0], info[1]];
+              });
 
 
-    
+            setMaterias(notasArray);
+        }
+
+
+    }, [props.usuarioCarregado])
+
+    useEffect(()=>{
+        console.log(materias)
+    }, [materias])
+
+
 
 
     function allowUserEdit(allow){
@@ -54,23 +80,29 @@ function UsuarioInfo(){
         <section id="userAllInfoSection">
 
                 <div className="contentRow">
-                    <p className="userInfoData">ID-</p>
-                    <p className="userInfoData">Nome</p>
+                    <p className="userInfoData">ID - {props.usuarioCarregado.id}</p>
+                    <p className="userInfoData">{props.usuarioCarregado.nome}</p>
                 </div>
 
-                
-                <table className="boletim">
+                {props.usuarioCarregado.tipo === "aluno" && (
+                    <table className="boletim">
                     <tr>
                         <th>Matéria</th>
                         <th>Nota</th>
+                        <th>Situação</th>
                     </tr>
                     
-                    <tr>
-                        <td className="materiaNome">Lógica de programação</td>
-                        <td className='matériaNota'>8</td>
-                    </tr>
+                   
 
-                    <tr>
+                    {materias && materias.map((materia, index) => (
+                        <tr key={index}>
+                            <td className="materiaNome">{materia[0]}</td>
+                            <td className='matériaNota'>{materia[1]}</td>
+                            <td className='matériaNota'>{materia[2]}</td>
+                        </tr>
+                    ))}
+
+                    {/* <tr>
                         <td className="materiaNome">Desenvolvimento web</td>
                         <td className='matériaNota'>10</td>
                     </tr>
@@ -78,9 +110,9 @@ function UsuarioInfo(){
                     <tr>
                         <td className="materiaNome">Banco de dados</td>
                         <td className='matériaNota'>7</td>
-                    </tr>
+                    </tr> */}
 
-                    <tr>
+                    {/* <tr>
                         <td className="materiaNome">Segurança da informação</td>
                         <td className='matériaNota'>7</td>
                     </tr>
@@ -88,7 +120,7 @@ function UsuarioInfo(){
                     <tr>
                         <td className="materiaNome">Internet das coisas</td>
                         <td className='matériaNota'>6</td>
-                    </tr>
+                    </tr> */}
 
                     <tfoot>
                         <th>Situação</th>
@@ -96,6 +128,9 @@ function UsuarioInfo(){
                     </tfoot>
 
                 </table>
+                )}
+
+                
 
 
             
@@ -104,7 +139,7 @@ function UsuarioInfo(){
                     <div className="usuarioDevInfo contentRow ">
                         {/* aluno/candidato */}
                         <div className="userInfoDiv">Tipo
-                            <p className="userInfoData">Candidato</p>
+                            <p className="userInfoData">{props.usuarioCarregado.tipo}</p>
                             <select  name="editType" id="editStack" className="editInput">
                                 <optgroup label="Tipo" >
                                     <option value="vazio">Selecione</option>
@@ -113,23 +148,10 @@ function UsuarioInfo(){
                                 </optgroup>
                             </select>
                         </div>
-                        {/* linguagem */}
-                        <div className="userInfoDiv">Linguagem
-                        <p className="userInfoData">Javascript</p>
-                        <select  name="editLanguage" id="editlanguage" className="editInput">
-                            <optgroup label="linguagem">
-                                <option value="vazio">Selecione</option>
-                                <option value="Javascript">Javascript</option>
-                                <option value="PHP">PHP</option>
-                                <option value="Java">Java</option>
-                                <option value="Phyton">Phyton</option>
-                                <option value="C#">C#</option>
-                            </optgroup>
-                        </select>
-                        </div>
+                        
                         {/* stack */}
                         <div className="userInfoDiv">Desenvolvedor
-                        <p className="userInfoData">fullStack</p>
+                        <p className="userInfoData">{props.usuarioCarregado.curso}</p>
                         <select  name="editStack" id="editStack" className="editInput" aria-disabled="true">
                             <optgroup label="Desenvolvedor" >
                                 <option value="vazio">Selecione</option>
@@ -141,19 +163,16 @@ function UsuarioInfo(){
                         </div>
                     </div>
                     <div className="contentRow">
-                        {/* cadastro */}
-                        <div className="userInfoDiv">Cadastro
-                            <p className="userInfoData">11/04/2024</p>
-                        </div>
+                       
                         {/* e-mail */}
                         <div className="userInfoDiv">E-mail
-                        <p className="userInfoData">Email@email.com.br</p>
+                        <p className="userInfoData">{props.usuarioCarregado.email}</p>
                         <input type="e-mail" className="editInput"></input>
                         </div>
                     
                         {/* telefone */}
                         <div className="userInfoDiv">Telefone
-                        <p className="userInfoData">11 99999-9999</p>
+                        <p className="userInfoData">{props.usuarioCarregado.email}</p>
                         <input type="tel" className="editInput"></input>
                         </div>
                     

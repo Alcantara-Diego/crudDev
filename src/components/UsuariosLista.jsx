@@ -1,7 +1,7 @@
 import dbTeste from "./dbTeste";
 import '../style/usuarioLista.scss'
 import { useNavigate } from "react-router-dom";
-function UsuariosLista(){
+function UsuariosLista(props){
 
     const navigate = useNavigate();
 
@@ -9,6 +9,10 @@ function UsuariosLista(){
 
 
 
+    function exibirUsuario(usuario){
+        props.setUsuarioCarregado(usuario);
+        navigate("/usuario");
+    }
 
 
     return (
@@ -20,13 +24,13 @@ function UsuariosLista(){
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Linguagem</th>
-                        <th>Desenvolvedor</th>
+                        <th>Curso</th>
                         <th>Tipo</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                {/* <tbody>
                     <tr>
                     
                         <td>Diego Alcântara</td>
@@ -38,21 +42,21 @@ function UsuariosLista(){
                             </button>
                         </td>
                     </tr>
-                </tbody>
+                </tbody> */}
                 
                 
                 
-                {dbTeste.map((obj) => {
+                {props.resultadoApi?.map((obj) => {
                     return(
                         <tbody key={obj.id}>
                             <tr >
                                 <td>{obj.nome}</td>
-                                <td>{obj.linguagem}</td>
-                                <td>{obj.stack}</td>
+                                <td>{obj.curso}</td>
                                 <td>{obj.tipo}</td>
+                                <td>{obj.status}</td>
                                 <td>
-                                    <button className="userInfoBtn" onClick={() => {navigate("/usuario")}}>
-                                    <i className="fa-solid fa-eye"></i>
+                                    <button className="userInfoBtn" onClick={() => {exibirUsuario(obj)}}>
+                                    O
                                     </button>
                                 </td>
                             </tr>
