@@ -83,7 +83,7 @@ function Sidebar(props){
                     <div className="sidebarHeaderContent">
                         <div className="userInfo">
                             <p>Bem-vindo</p>
-                            <h4>Usuario123</h4>
+                            <h4>Administrador</h4>
                         </div>
                     </div>
                 </li>

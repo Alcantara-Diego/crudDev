@@ -4,27 +4,34 @@
     border: 1px solid #80808080;
  
     padding: 0;
-    // text-align: center;
     z-index: 100;
     transition: 1.0s;
 
+    .usuarioGeralInfo{
+        // border: 1px solid red;
+        display: flex;
+        flex-direction: row;
+    }
+
     .boletim{
-        color: whitesmoke;
-        background-color: #171717e8;
-        width: 300px;
+        color: rgb(27, 27, 27);
+        // background-color: #171717e8;
+        background-color: #c9c9c9e8;
+        width: 100%;
+        border: 1px solid whitesmoke;
 
-        li{
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 5px;
-            border-bottom: 1px solid whitesmoke;
-            text-align: start;
+        tr{
+            
+            text-align: center;
 
-
-
+            td{
+                text-transform: capitalize;
+                padding: 5px;
+                border-bottom: 1px solid whitesmoke;
+            }
         }
+
+     
     }
 
     .contentRow{
@@ -40,6 +47,10 @@
         
         .usuarioDevInfo{
         background-color: rgb(236, 236, 236);
+        }
+
+        .usuarioNome{
+            text-transform: capitalize;
         }
     }
 

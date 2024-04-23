@@ -3,7 +3,7 @@ import '../style/nav.scss'
 function Nav(){
     return (
         <nav>
-            <h1>Crud Dev</h1>
+            <h1>Sistema estudantil</h1>
         </nav>
     )
 }
