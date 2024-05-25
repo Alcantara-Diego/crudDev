@@ -164,19 +164,21 @@ function UsuarioInfo(props){
                     <>
                         <h2>Boletim</h2>
                         <table className="boletim">
-                        <tr>
-                            <th className="materiaDescricao">Matéria</th>
-                            <th>Nota</th>
-                            <th>Situação</th>
-                        </tr>
-                        
-                        {materias && materias.map((materia, index) => (
-                            <tr key={index}>
-                                <td className="materiaNome">{materia[0]}</td>
-                                <td className='matériaNota'>{materia[1]}</td>
-                                <td className='matériaNota'>{materia[2]}</td>
+                        <tbody>
+                            <tr>
+                                <th className="materiaDescricao">Matéria</th>
+                                <th>Nota</th>
+                                <th>Situação</th>
                             </tr>
-                        ))}
+                            
+                            {materias && materias.map((materia, index) => (
+                                <tr key={index}>
+                                    <td className="materiaNome">{materia[0]}</td>
+                                    <td className='matériaNota'>{materia[1]}</td>
+                                    <td className='matériaNota'>{materia[2]}</td>
+                                </tr>
+                            ))}
+                        </tbody>
                         {/* <tr>
                             <td className="materiaNome">Segurança da informação</td>
                             <td className='matériaNota'>7</td>

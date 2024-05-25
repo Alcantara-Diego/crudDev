@@ -1,4 +1,5 @@
 import '../style/sidebar.scss'
+import { chamarApi } from '../js/functions';
 import { useNavigate } from "react-router-dom"
 
 function Sidebar(props){
@@ -20,23 +21,14 @@ function Sidebar(props){
             case "verAlunos":
 
                 let alunos;
-                try {
-                    let res = await fetch(`http://localhost:8000/api/buscar/tipo/aluno`).then(res => res.json()).then(data => {
-                        alunos = data;
+              
+                alunos = await chamarApi(`http://localhost:8000/api/buscar/tipo/aluno`);
 
-                        alunos.forEach(pessoa =>{
-                            pessoa.notas = JSON.parse(pessoa.notas);
-                        })
+                alunos.forEach(pessoa =>{
+                    pessoa.notas = JSON.parse(pessoa.notas);
+                })
 
-                        props.setResultadoApi(alunos);
-
-
-                    })
-                } catch (error) {
-                    console.log(error)
-                    
-                }
-
+                props.setResultadoApi(alunos);
 
                 navigate("/lista");
 
@@ -44,23 +36,14 @@ function Sidebar(props){
 
             case "verCandidatos":
 
-                let candidatos;
+                let candidatos = await chamarApi(`http://localhost:8000/api/buscar/tipo/candidato`);
 
-                try {
-                    let res = await fetch(`http://localhost:8000/api/buscar/tipo/candidato`).then(res => res.json()).then(data => {
-                        candidatos = data;
+                candidatos.forEach(pessoa =>{
+                    pessoa.notas = JSON.parse(pessoa.notas);
+                })
 
-                        candidatos.forEach(pessoa =>{
-                            pessoa.notas = JSON.parse(pessoa.notas);
-                        });
+                props.setResultadoApi(candidatos);
 
-                        props.setResultadoApi(candidatos);
-                    
-                    })
-                } catch (error) {
-                    console.log(error)
-                    
-                }
                 navigate("/lista");
 
                 break;

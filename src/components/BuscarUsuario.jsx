@@ -1,5 +1,6 @@
 import '../style/buscarUsuario.scss'
 import { useNavigate } from 'react-router-dom';
+import { chamarApi } from '../js/functions';
 import { useState } from 'react';
 function BuscarUsuario(props){
 
@@ -41,24 +42,14 @@ function BuscarUsuario(props){
     async function buscarDados(tipo){
         event.preventDefault();
 
-
         let valor = document.getElementById(tipo).value;
         if (valor=="vazio") return;
 
-        console.log(valor);
-
-
-        let resposta;
-
-
         console.log(tipo, valor)
 
-        try {
-            let res = await fetch(`http://localhost:8000/api/buscar/${tipo}/${valor}`).then(res => res.json()).then(data => resposta = data)
-        } catch (error) {
-            console.log(error)
-            
-        }
+        
+
+        let resposta = await chamarApi(`http://localhost:8000/api/buscar/${tipo}/${valor}`);
         
 
         
@@ -69,7 +60,6 @@ function BuscarUsuario(props){
         })
 
         props.setResultadoApi(resposta);
-        // console.log(res);
         navigate("/lista");
     }
 

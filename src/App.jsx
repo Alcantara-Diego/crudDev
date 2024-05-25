@@ -1,4 +1,5 @@
 import './style/app.scss'
+import CarregandoTela from './components/CarregandoTela'
 import Nav from './components/Nav'
 import Sidebar from './components/Sidebar'
 import BuscarUsuario from './components/BuscarUsuario'
@@ -21,11 +22,13 @@ function App() {
   return (
     <Router>
       <div>
+        
         <Nav></Nav>
         <div className="container">
           <Sidebar setResultadoApi={setResultadoApi}></Sidebar>
       
             <div className='telaExibida'>
+              <CarregandoTela></CarregandoTela>
               <Routes>
                 <Route path='/'  element={<BuscarUsuario setResultadoApi={setResultadoApi}/>} />
                 <Route path='/novoUsuario' element={<NovoUsuario />} />
